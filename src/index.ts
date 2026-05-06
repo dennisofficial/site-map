@@ -42,8 +42,7 @@ const createMakeRoute = (parentPath: string = ''): RouteUtils['makeRoute'] => {
     segment: string,
     cb?: (utils: RouteUtils) => T,
   ): T & RouteFunction<TQuery> => {
-    const fullPath =
-      `${parentPath}/${segment}`.replace(/\/+/g, '/').replace(/\/$/, '') || '/';
+    const fullPath = `${parentPath}/${segment}`.replace(/\/+/g, '/').replace(/\/$/, '') || '/';
     const route = createRouteFunction(fullPath);
     if (!cb) return Object.assign(route, {} as T) as T & RouteFunction<TQuery>;
 
@@ -85,9 +84,7 @@ const createMakeRoute = (parentPath: string = ''): RouteUtils['makeRoute'] => {
  * SITE_MAP.AUTH.LOGIN()                        // '/auth/login'
  * SITE_MAP.AUTH.LOGIN({ callbackUrl: '/app' }) // '/auth/login?callbackUrl=%2Fapp'
  */
-export const createSiteMap = <T>(
-  cb: (utils: RouteUtils) => T,
-): T & RouteFunction => {
+export const createSiteMap = <T>(cb: (utils: RouteUtils) => T): T & RouteFunction => {
   const makeRoute = createMakeRoute('');
   return makeRoute('/', cb);
 };
