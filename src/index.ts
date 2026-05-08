@@ -2,12 +2,12 @@
 export type QueryValue = string | number | boolean | null | undefined;
 export type QueryParams = Record<string, QueryValue>;
 
-export interface RouteFunction<TQuery extends QueryParams = QueryParams> {
+export type RouteFunction<TQuery extends QueryParams = QueryParams> = {
   (): string;
   (query: TQuery): string;
 }
 
-export interface RouteUtils {
+export type RouteUtils = {
   makeRoute<TQuery extends QueryParams = QueryParams, T = {}>(
     segment: string,
     cb?: (utils: RouteUtils) => T,
