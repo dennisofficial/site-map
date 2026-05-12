@@ -5,7 +5,7 @@ export type QueryParams = Record<string, QueryValue>;
 export type RouteFunction<TQuery extends QueryParams = QueryParams> = {
   (): string;
   (query: TQuery): string;
-}
+};
 
 export type RouteUtils = {
   makeRoute<TQuery extends QueryParams = QueryParams, T = {}>(
@@ -15,7 +15,7 @@ export type RouteUtils = {
   param<TQuery extends QueryParams = QueryParams, T = {}>(
     cb: (utils: RouteUtils) => T,
   ): (id: string) => T & RouteFunction<TQuery>;
-}
+};
 
 const serializeQuery = (query: QueryParams): string => {
   const params = new URLSearchParams();
