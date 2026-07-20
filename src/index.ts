@@ -1,4 +1,3 @@
-/** Query parameter value types that can be serialized to a URL string */
 export type QueryValue = string | number | boolean | null | undefined;
 export type QueryParams = Record<string, QueryValue>;
 
