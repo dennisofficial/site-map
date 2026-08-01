@@ -1,40 +1,71 @@
 {
-  "name": "@workspace/site-map",
-  "version": "1.0.0",
-  "description": "Package description",
+  "name": "@dltech/site-map",
+  "version": "1.0.0-next.0",
+  "description": "Typed, composable site-map builder for React/Next.js apps — declare routes as a tree and get autocompleted route functions with typed query params back",
+  "license": "MIT",
+  "author": "Dennis Lysenko",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennisofficial/site-map.git"
+  },
+  "homepage": "https://github.com/dennisofficial/site-map#readme",
+  "bugs": {
+    "url": "https://github.com/dennisofficial/site-map/issues"
+  },
+  "keywords": [
+    "routing",
+    "routes",
+    "typescript",
+    "type-safe",
+    "url-builder",
+    "site-map",
+    "nextjs",
+    "react"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "commonjs",
+  "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
-  "types": "./src/index.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
-        "types": "./src/index.ts",
+        "types": "./dist/index.d.mts",
         "default": "./dist/index.mjs"
       },
       "require": {
-        "types": "./src/index.ts",
+        "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       }
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
-    "build": "pnpm tsup",
-    "dev": "nodemon"
+    "build": "tsup",
+    "changeset": "changeset",
+    "release": "changeset version",
+    "dev": "nodemon",
+    "prepare": "pnpm build",
+    "typecheck": "tsc --noEmit"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
+    "@changesets/cli": "^2.31.1",
     "@swc/core": "^1.15.32",
     "@types/node": "^25.6.0",
     "nodemon": "^3.1.14",
     "prettier": "^3.8.3",
     "prettier-plugin-organize-imports": "^4.3.0",
     "tsup": "^8.5.1",
-    "typescript": "^6.0.3"
-  }
+    "typescript": "6.0.3"
+  },
+  "packageManager": "pnpm@11.18.0+sha512.33d83c77da82f49fba836925c6f1b841181ec3132b670639bd012f7075f5c7cf634c5f870147c19aae7478fac01df09d8892e880454896edd23ee9b33757563c"
 }
