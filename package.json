@@ -1,6 +1,6 @@
 {
   "name": "@dltech/site-map",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Typed, composable site-map builder for React/Next.js apps — declare routes as a tree and get autocompleted route functions with typed query params back",
   "license": "MIT",
   "author": "Dennis Lysenko",
