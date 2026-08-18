@@ -21,7 +21,7 @@ concurrency:
 
 jobs:
   verify:
-    name: Build, typecheck
+    name: Build, typecheck, test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -54,6 +54,9 @@ jobs:
 
       - name: Typecheck
         run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
 
   publish:
     name: Tag and publish to npm

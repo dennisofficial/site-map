@@ -27,6 +27,9 @@ const serializeQuery = (query: QueryParams): string => {
   return qs ? `?${qs}` : '';
 };
 
+const joinPath = (basePath: string, segment: string): string =>
+  `${basePath}/${segment}`.replace(/\/+/g, '/').replace(/\/$/, '') || '/';
+
 const createRouteFunction = (fullPath: string): RouteFunction => {
   return (query?: QueryParams): string => {
     if (query && Object.keys(query).length > 0) {
@@ -41,7 +44,7 @@ const createMakeRoute = (parentPath: string = ''): RouteUtils['makeRoute'] => {
     segment: string,
     cb?: (utils: RouteUtils) => T,
   ): T & RouteFunction<TQuery> => {
-    const fullPath = `${parentPath}/${segment}`.replace(/\/+/g, '/').replace(/\/$/, '') || '/';
+    const fullPath = joinPath(parentPath, segment);
     const route = createRouteFunction(fullPath);
     if (!cb) return Object.assign(route, {} as T) as T & RouteFunction<TQuery>;
 
@@ -50,7 +53,7 @@ const createMakeRoute = (parentPath: string = ''): RouteUtils['makeRoute'] => {
         paramCb: (utils: RouteUtils) => TT,
       ) => {
         return (id: string): TT & RouteFunction<TQ> => {
-          const paramPath = `${basePath}/${id}`;
+          const paramPath = joinPath(basePath, id);
           const paramRoute = createRouteFunction(paramPath);
           const paramUtils: RouteUtils = {
             makeRoute: createMakeRoute(paramPath),

@@ -43,8 +43,8 @@ Param leaves (declared with `param`) take the id first, then are called again to
 string — this is what lets a param segment nest further static and dynamic routes beneath it:
 
 ```ts
-SITE_MAP.jobs.job(jobId)(); // '/jobs/:jobId'
-SITE_MAP.jobs.job(jobId).thread(threadId)(); // '/jobs/:jobId/:threadId'
+SITE_MAP.jobs.job('job_42')(); // '/jobs/job_42'
+SITE_MAP.jobs.job('job_42').thread('thread_7')(); // '/jobs/job_42/thread_7'
 ```
 
 Query param types are per-route — pass a type argument to `makeRoute<TQuery>` to constrain what
